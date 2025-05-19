@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { House } from 'lucide-react';
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { House } from "lucide-react";
 
 export default function NotFoundPage() {
   useEffect(() => {
-    document.title = 'Page Not Found | Vogue 360';
+    document.title = "Page Not Found | Vogue Vest";
   }, []);
 
   return (

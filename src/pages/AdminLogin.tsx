@@ -1,38 +1,38 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Lock, LogIn, Mail } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Lock, LogIn, Mail } from "lucide-react";
 
 export default function AdminLogin() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Admin Login | Vogue 360';
-    
+    document.title = "Admin Login | Vogue Vest";
+
     // Check if already logged in
-    const isAdminLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+    const isAdminLoggedIn = localStorage.getItem("adminLoggedIn") === "true";
     if (isAdminLoggedIn) {
-      navigate('/admin/dashboard');
+      navigate("/admin/dashboard");
     }
   }, [navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsLoading(true);
 
     // Simple mock authentication (in a real app, this would be a server request)
     setTimeout(() => {
       // Mock credentials for demo purposes
-      if (email === 'admin@vogue360.com' && password === 'admin123') {
-        localStorage.setItem('adminLoggedIn', 'true');
-        navigate('/admin/dashboard');
+      if (email === "admin@voguevest.com" && password === "admin123") {
+        localStorage.setItem("adminLoggedIn", "true");
+        navigate("/admin/dashboard");
       } else {
-        setError('Invalid email or password');
+        setError("Invalid email or password");
       }
       setIsLoading(false);
     }, 1000);
@@ -49,7 +49,7 @@ export default function AdminLogin() {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">
             <span>VOGUE</span>
-            <span className="gold-gradient">360</span>
+            <span className="gold-gradient">Vest</span>
           </h1>
           <h2 className="text-xl font-medium mt-4">Admin Portal</h2>
         </div>
@@ -74,14 +74,17 @@ export default function AdminLogin() {
                 Email Address
               </label>
               <div className="relative">
-                <Mail size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <Mail
+                  size={18}
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 focus:border-black focus:outline-none"
-                  placeholder="admin@vogue360.com"
+                  placeholder="admin@voguevest.com"
                 />
               </div>
             </div>
@@ -91,7 +94,10 @@ export default function AdminLogin() {
                 Password
               </label>
               <div className="relative">
-                <Lock size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <Lock
+                  size={18}
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                />
                 <input
                   type="password"
                   value={password}
@@ -110,9 +116,25 @@ export default function AdminLogin() {
             >
               {isLoading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Signing in...
                 </>
@@ -127,7 +149,7 @@ export default function AdminLogin() {
 
           <div className="mt-6 text-center text-sm text-gray-500">
             <p>Demo credentials:</p>
-            <p>Email: admin@vogue360.com</p>
+            <p>Email: admin@voguevest.com</p>
             <p>Password: admin123</p>
           </div>
         </motion.div>

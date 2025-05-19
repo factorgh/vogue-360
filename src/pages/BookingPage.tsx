@@ -1,48 +1,60 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Check, Clock, Mail, MessageSquare, Phone, User } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  Calendar,
+  Check,
+  Clock,
+  Mail,
+  MessageSquare,
+  Phone,
+  User,
+} from "lucide-react";
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
-    time: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    message: "",
   });
-  
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    document.title = 'Book a Session | Vogue 360';
+    document.title = "Book a Session | Vogue Vest";
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       // Reset form after successful submission
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
-        time: '',
-        message: '',
+        name: "",
+        email: "",
+        phone: "",
+        date: "",
+        time: "",
+        message: "",
       });
     }, 1500);
   };
@@ -51,24 +63,29 @@ export default function BookingPage() {
   const generateAvailableDates = () => {
     const dates = [];
     const today = new Date();
-    
+
     for (let i = 1; i <= 14; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
-      
+
       // Format date as YYYY-MM-DD
-      const formattedDate = date.toISOString().split('T')[0];
+      const formattedDate = date.toISOString().split("T")[0];
       dates.push(formattedDate);
     }
-    
+
     return dates;
   };
 
   // Available time slots
   const timeSlots = [
-    '10:00 AM', '11:00 AM', '12:00 PM', 
-    '1:00 PM', '2:00 PM', '3:00 PM', 
-    '4:00 PM', '5:00 PM'
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 PM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
   ];
 
   return (
@@ -83,7 +100,8 @@ export default function BookingPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">Book a Styling Session</h1>
             <p className="text-gray-600">
-              Schedule a one-on-one session with our fashion experts to discover your unique style and receive personalized recommendations.
+              Schedule a one-on-one session with our fashion experts to discover
+              your unique style and receive personalized recommendations.
             </p>
           </div>
 
@@ -96,11 +114,15 @@ export default function BookingPage() {
               <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
                 <Check size={32} className="text-green-600" />
               </div>
-              <h2 className="text-2xl font-semibold mb-2">Booking Successful!</h2>
+              <h2 className="text-2xl font-semibold mb-2">
+                Booking Successful!
+              </h2>
               <p className="text-gray-600 mb-6">
-                Thank you for booking a session with us. We've sent a confirmation email with all the details. Our team will contact you shortly.
+                Thank you for booking a session with us. We've sent a
+                confirmation email with all the details. Our team will contact
+                you shortly.
               </p>
-              <button 
+              <button
                 onClick={() => setIsSubmitted(false)}
                 className="btn-primary"
               >
@@ -108,7 +130,7 @@ export default function BookingPage() {
               </button>
             </motion.div>
           ) : (
-            <motion.form 
+            <motion.form
               onSubmit={handleSubmit}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -116,9 +138,14 @@ export default function BookingPage() {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="col-span-2 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name
+                  </label>
                   <div className="relative">
-                    <User size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <User
+                      size={18}
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    />
                     <input
                       type="text"
                       name="name"
@@ -130,11 +157,16 @@ export default function BookingPage() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="col-span-2 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address
+                  </label>
                   <div className="relative">
-                    <Mail size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <Mail
+                      size={18}
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    />
                     <input
                       type="email"
                       name="email"
@@ -146,11 +178,16 @@ export default function BookingPage() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="col-span-2 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number
+                  </label>
                   <div className="relative">
-                    <Phone size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <Phone
+                      size={18}
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    />
                     <input
                       type="tel"
                       name="phone"
@@ -162,11 +199,16 @@ export default function BookingPage() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="col-span-2 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Preferred Date</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Preferred Date
+                  </label>
                   <div className="relative">
-                    <Calendar size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <Calendar
+                      size={18}
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    />
                     <select
                       name="date"
                       required
@@ -175,19 +217,28 @@ export default function BookingPage() {
                       className="w-full pl-10 pr-4 py-2 border border-gray-300 focus:border-black focus:outline-none appearance-none"
                     >
                       <option value="">Select a date</option>
-                      {generateAvailableDates().map(date => (
+                      {generateAvailableDates().map((date) => (
                         <option key={date} value={date}>
-                          {new Date(date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
+                          {new Date(date).toLocaleDateString("en-US", {
+                            weekday: "short",
+                            month: "short",
+                            day: "numeric",
+                          })}
                         </option>
                       ))}
                     </select>
                   </div>
                 </div>
-                
+
                 <div className="col-span-2 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Preferred Time</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Preferred Time
+                  </label>
                   <div className="relative">
-                    <Clock size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <Clock
+                      size={18}
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    />
                     <select
                       name="time"
                       required
@@ -196,17 +247,24 @@ export default function BookingPage() {
                       className="w-full pl-10 pr-4 py-2 border border-gray-300 focus:border-black focus:outline-none appearance-none"
                     >
                       <option value="">Select a time</option>
-                      {timeSlots.map(time => (
-                        <option key={time} value={time}>{time}</option>
+                      {timeSlots.map((time) => (
+                        <option key={time} value={time}>
+                          {time}
+                        </option>
                       ))}
                     </select>
                   </div>
                 </div>
-                
+
                 <div className="col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Additional Information</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Additional Information
+                  </label>
                   <div className="relative">
-                    <MessageSquare size={18} className="absolute left-3 top-3 text-gray-400" />
+                    <MessageSquare
+                      size={18}
+                      className="absolute left-3 top-3 text-gray-400"
+                    />
                     <textarea
                       name="message"
                       rows={4}
@@ -218,7 +276,7 @@ export default function BookingPage() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-8">
                 <button
                   type="submit"
@@ -227,14 +285,30 @@ export default function BookingPage() {
                 >
                   {isSubmitting ? (
                     <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
                       </svg>
                       Processing...
                     </>
                   ) : (
-                    'Book Your Session'
+                    "Book Your Session"
                   )}
                 </button>
               </div>

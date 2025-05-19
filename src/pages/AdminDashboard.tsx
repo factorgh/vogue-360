@@ -19,7 +19,7 @@ export default function AdminDashboard() {
   const location = useLocation();
 
   useEffect(() => {
-    document.title = "Admin Dashboard | Vogue 360";
+    document.title = "Admin Dashboard | Vogue Vest";
 
     // Check if admin is logged in
     const isAdminLoggedIn = localStorage.getItem("adminLoggedIn") === "true";
@@ -43,7 +43,7 @@ export default function AdminDashboard() {
       <div className="lg:hidden p-4 flex justify-between items-center bg-white border-b">
         <div className="font-semibold">
           <span>VOGUE</span>
-          <span className="gold-gradient">360</span>
+          <span className="gold-gradient">Vest</span>
           <span className="ml-2 text-sm text-gray-500">Admin</span>
         </div>
         <button
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
             <div className="p-6 border-b hidden lg:block">
               <div className="font-semibold text-xl">
                 <span>VOGUE</span>
-                <span className="gold-gradient">360</span>
+                <span className="gold-gradient">Vest</span>
               </div>
               <div className="text-sm text-gray-500 mt-1">Admin Dashboard</div>
             </div>
