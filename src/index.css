@@ -1,0 +1,27 @@
+@import "tailwindcss";
+:root {
+  font-family: "Playfair Display", serif;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.gold-gradient {
+  background: linear-gradient(45deg, #d4af37 0%, #f9f295 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-black text-white font-medium tracking-wider hover:bg-gray-900 transition-colors duration-300;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border border-black text-black font-medium tracking-wider hover:bg-black hover:text-white transition-colors duration-300;
+  }
+}
